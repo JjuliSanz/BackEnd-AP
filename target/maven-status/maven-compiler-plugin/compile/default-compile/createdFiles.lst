@@ -11,6 +11,7 @@ com\juliSanz\Portfolio\entity\Persona.class
 com\juliSanz\Portfolio\service\SoftSkillService.class
 com\juliSanz\Portfolio\controller\HardSkillController.class
 com\juliSanz\Portfolio\entity\SoftSkill.class
+com\juliSanz\Portfolio\WebConfig.class
 com\juliSanz\Portfolio\repository\HardSkillRepository.class
 com\juliSanz\Portfolio\service\LanguajeService.class
 com\juliSanz\Portfolio\service\EducationService.class
