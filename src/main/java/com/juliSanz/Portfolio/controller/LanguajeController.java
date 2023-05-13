@@ -17,7 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("languaje") //localhost:8080/languaje
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"https://backend-ap-yky6.onrender.com"})
 public class LanguajeController {
     
     @Autowired
