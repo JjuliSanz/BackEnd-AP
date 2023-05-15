@@ -4,6 +4,7 @@ import com.juliSanz.Portfolio.entity.SoftSkill;
 import com.juliSanz.Portfolio.service.SoftSkillService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,24 +37,28 @@ public class SoftSkillController {
         return softSkillServ.findSoftSkill(id);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping ("/create")
     public void addSoftSkill (@RequestBody SoftSkill softSkill) {
         softSkillServ.createSoftSkill(softSkill);
 //        return "The SoftSkill was created successfully";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping ("/delete/{id}")
     public void deleteSoftSkill(@PathVariable int id) {
         softSkillServ.deleteSoftSkill(id);
 //        return "The SoftSkill was deleted successfully";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping ("/update")
     public void updateSoftSkill(@RequestBody SoftSkill softSkill) {
         softSkillServ.updateSoftSkill(softSkill);
 //        return "The SoftSkill was updated successfully";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping ("/update/{id}")
     public void updateSoftSkillById(@PathVariable int id, SoftSkill softSkill) {
         softSkillServ.updateSoftSkill(softSkill);

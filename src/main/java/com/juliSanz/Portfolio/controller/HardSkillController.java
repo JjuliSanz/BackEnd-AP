@@ -4,6 +4,7 @@ import com.juliSanz.Portfolio.entity.HardSkill;
 import com.juliSanz.Portfolio.service.HardSkillService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,24 +37,28 @@ public class HardSkillController {
         return hardSkillServ.findHardSkill(id);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping ("/create")
     public void addHardSkill (@RequestBody HardSkill hardSkill) {
         hardSkillServ.createHardSkill(hardSkill);
 //        return "The HardSkill was created successfully";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping ("/delete/{id}")
     public void deleteHardSkill(@PathVariable int id) {
         hardSkillServ.deleteHardSkill(id);
 //        return "The HardSkill was deleted successfully";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping ("/update")
     public void updateHardSkill(@RequestBody HardSkill hardSkill) {
         hardSkillServ.updateHardSkill(hardSkill);
 //        return "The HardSkill was updated successfully";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping ("/update/{id}")
     public void updateHardSkillById(@PathVariable int id, HardSkill hardSkill) {
         hardSkillServ.updateHardSkill(hardSkill);

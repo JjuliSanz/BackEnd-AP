@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,30 +42,35 @@ public class EducationController {
         return educationServ.findEducation(id);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping ("/create")
     public void addEducation (@RequestBody Education education) {
         educationServ.createEducation(education);
 //        return "The Education was created successfully";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping ("/delete/{id}")
     public void deleteEducation(@PathVariable int id) {
         educationServ.deleteEducation(id);
 //        return "The Education was deleted successfully";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping ("/delete")
     public void deleteAllEducation() {
         educationServ.deleteAllEducation();
 //        return "The Educations was deleted successfully";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping ("/update")
     public void updateEducation(@RequestBody Education education) {
         educationServ.updateEducation(education);
 //        return "The Education was updated successfully";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping ("/update/{id}")
     public void updateEducationById(@PathVariable int id, Education education) {
         educationServ.updateEducation(education);

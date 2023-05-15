@@ -4,6 +4,7 @@ import com.juliSanz.Portfolio.entity.Languaje;
 import com.juliSanz.Portfolio.service.LanguajeService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,24 +37,28 @@ public class LanguajeController {
         return languajeServ.findLanguaje(id);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping ("/create")
     public void addLanguaje (@RequestBody Languaje languaje) {
         languajeServ.createLanguaje(languaje);
 //        return "The Languaje was created successfully";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping ("/delete/{id}")
     public void deleteLanguaje(@PathVariable int id) {
         languajeServ.deleteLanguaje(id);
 //        return "The Languaje was deleted successfully";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping ("/update")
     public void updateLanguaje(@RequestBody Languaje languaje) {
         languajeServ.updateLanguaje(languaje);
 //        return "The Languaje was updated successfully";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping ("/update/{id}")
     public void updateLanguajeById(@PathVariable int id, Languaje languaje) {
         languajeServ.updateLanguaje(languaje);
